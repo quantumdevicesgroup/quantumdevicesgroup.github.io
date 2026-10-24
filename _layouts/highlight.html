@@ -1,0 +1,22 @@
+---
+---
+{% comment %}
+  One slide in the home-page highlights slider (used with
+  {% bibliography --template highlight %}). Image: the paper's `image`
+  field if set, else the image of its first research direction.
+{% endcomment %}
+{% assign is_preprint = false %}
+{% if entry.type == 'unpublished' or entry.journal == nil or entry.journal == '' %}{% assign is_preprint = true %}{% endif %}
+{% if is_preprint %}{% assign main_url = entry.arxiv | prepend: 'https://arxiv.org/abs/' %}{% else %}{% assign main_url = entry.doi | prepend: 'https://doi.org/' %}{% endif %}
+{% assign img = entry.image %}
+{% unless img %}{% assign t = entry.thrusts | split: " " | first %}{% assign rdoc = site.research | where: "slug", t | first %}{% assign img = rdoc.image %}{% endunless %}
+<div class="highlight-slide">
+  <div class="highlight-text">
+    <span class="highlight-venue">{% if is_preprint %}arXiv{% else %}{{ entry.journal | bib_text }}{% endif %} {{ entry.year }}</span>
+    <h3 class="highlight-title"><a href="{{ main_url }}">{{ entry.title | bib_text }}</a></h3>
+    <p class="highlight-authors">{{ entry | pub_authors }}</p>
+    {% if entry.highlight %}<p class="highlight-abstract">{{ entry.highlight | bib_text }}</p>{% elsif entry.abstract %}<p class="highlight-abstract">{{ entry.abstract | bib_text | truncatewords: 55 }}</p>{% endif %}
+    <a class="highlight-btn" href="{{ main_url }}">Read the paper</a>
+  </div>
+  {% if img %}<div class="highlight-img"><img src="{{ img | relative_url }}" alt="Figure from {{ entry.title | bib_text | escape }}" loading="lazy"></div>{% endif %}
+</div>

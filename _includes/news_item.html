@@ -1,0 +1,17 @@
+{% comment %} One row of the news feed. Pass post=... {% endcomment %}
+{% assign p = include.post %}
+<article class="news-item" data-tags="{{ p.tags | join: ' ' }}">
+  <div class="news-item-date">
+    <span class="news-item-day">{{ p.date | date: "%b %-d" }}</span>
+    <span class="news-item-year">{{ p.date | date: "%Y" }}</span>
+  </div>
+  <div class="news-item-body">
+    <h3 class="news-item-title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+    {% if p.summary %}<p class="news-item-summary">{{ p.summary }}</p>{% endif %}
+    <p class="news-item-meta">
+      {% for t in p.tags %}<span class="news-tag">{{ t }}</span>{% endfor %}
+      {% if p.photo_count > 1 %}<span class="news-photos">{{ p.photo_count }} photos</span>{% endif %}
+    </p>
+  </div>
+  {% assign thumb = p.thumb | default: p.image %}{% if thumb %}<a class="news-item-thumb" href="{{ p.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ thumb | relative_url }}" alt="" loading="lazy"></a>{% endif %}
+</article>

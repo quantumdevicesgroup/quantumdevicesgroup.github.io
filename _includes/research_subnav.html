@@ -1,0 +1,8 @@
+{% comment %} Second menu row on the Research pages (Yu-group style). {% endcomment %}
+{% assign thrusts = site.research | sort: "order" %}
+<nav class="section-nav full-bleed" aria-label="Research directions" markdown="0">
+  <ul>
+    <li><a href="{{ '/research/' | relative_url }}"{% if page.url == '/research/' %} aria-current="page"{% endif %}>Overview</a></li>
+    {% for r in thrusts %}<li><a href="{{ r.url | relative_url }}"{% if page.url == r.url %} aria-current="page"{% endif %}>{{ r.short_title | default: r.title }}</a></li>{% endfor %}
+  </ul>
+</nav>

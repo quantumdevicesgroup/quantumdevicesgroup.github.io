@@ -1,0 +1,125 @@
+// =============================================================
+// Photo slider — any [data-slider] (news posts, team, facilities).
+// Native horizontal scroll with snap, so swipe works without JS;
+// site.js adds arrows, dots and the counter.
+// =============================================================
+
+.slider {
+  position: relative;
+  margin: var(--space-6) 0;
+}
+
+.slider .slider-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+  &:focus-visible { outline: 3px solid var(--california-gold); outline-offset: 2px; }
+
+  > figure,
+  > figure.post-figure {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    margin: 0;
+  }
+
+  > figure img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: 540px;
+    aspect-ratio: auto;
+    object-fit: contain;
+    background: var(--bg-secondary);
+    border-bottom: 3px solid var(--berkeley-blue);
+
+    @media (max-width: 900px) { height: 420px; }
+    @media (max-width: 640px) { height: 280px; }
+  }
+
+  > figure figcaption {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    padding: var(--space-2) 4.5rem 0 0;   // room for the counter
+    min-height: 2.2em;
+    line-height: 1.45;
+  }
+}
+
+.slider-btn {
+  position: absolute;
+  top: 270px;                              // half the image height
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 50, 98, 0.85);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), opacity var(--transition-fast);
+
+  &:hover { background: var(--berkeley-blue); }
+  &:focus-visible { outline: 3px solid var(--california-gold); }
+  &:disabled { opacity: 0; pointer-events: none; }
+  &.prev { left: var(--space-3); }
+  &.next { right: var(--space-3); }
+
+  @media (max-width: 900px) { top: 210px; }
+  @media (max-width: 640px) { top: 140px; width: 2.25rem; height: 2.25rem; font-size: 1.25rem; }
+}
+
+.slider-counter {
+  position: absolute;
+  right: 0;
+  top: calc(540px + var(--space-2));
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--berkeley-blue);
+
+  @media (max-width: 900px) { top: calc(420px + var(--space-2)); }
+  @media (max-width: 640px) { top: calc(280px + var(--space-2)); }
+}
+
+.slider-dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: var(--space-2);
+
+  // 24x24px touch targets (WCAG 2.5.8) around a small visible dot
+  gap: 0;
+  button {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    &::before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin: 7px;
+      border-radius: 50%;
+      background: #8a949c;            // 3:1 against white (WCAG 1.4.11)
+    }
+    &.active::before { background: var(--california-gold); box-shadow: 0 0 0 2px var(--berkeley-blue); }
+    &:focus-visible { outline: 2px solid var(--berkeley-blue); outline-offset: -2px; border-radius: 50%; }
+  }
+}
+
+.lightbox-link { cursor: zoom-in; display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slider .slider-track { scroll-behavior: auto; }
+}

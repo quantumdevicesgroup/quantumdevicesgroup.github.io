@@ -1,0 +1,52 @@
+// =============================================================
+// Footer — Berkeley Blue, as in the Berkeley brand theme
+// =============================================================
+
+.site-footer {
+  background-color: var(--berkeley-blue);
+  color: #ccc;
+  padding: var(--space-12) 0 var(--space-8);
+  margin-top: var(--space-16);
+
+  .footer-heading {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--california-gold);
+    margin: 0 0 var(--space-4);
+    &::after { display: none; }
+  }
+
+  p, a {
+    font-size: 0.9375rem;
+    color: #e6e6e6;
+    line-height: 1.9;
+  }
+
+  a:hover { color: var(--california-gold); text-decoration: none; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  .footer-copyright {
+    text-align: center;
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    color: #acb5b9;
+    font-size: 0.8125rem;
+  }
+}

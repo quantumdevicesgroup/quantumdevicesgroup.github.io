@@ -1,0 +1,16 @@
+{% comment %} Research directions as cards: image, title, teaser, Read more (Yu-group style). {% endcomment %}
+{% assign thrusts = site.research | where_exp: "r", "r.past != true" | sort: "order" %}
+{% assign past = site.research | where: "past", true %}
+<div class="research-cards" markdown="0">
+{% for r in thrusts %}
+  <article class="research-card">
+    <a class="research-card-img" href="{{ r.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ r.image | relative_url }}" alt="" loading="lazy"></a>
+    <h2 class="research-card-title"><a href="{{ r.url | relative_url }}">{{ r.title }}</a></h2>
+    <p class="research-card-teaser">{% if r.summary %}{{ r.summary }}{% else %}{{ r.content | strip_html | strip_newlines | truncatewords: 28 }}{% endif %}</p>
+    <a class="research-card-more" href="{{ r.url | relative_url }}" aria-label="Read more about {{ r.title }}">Read more &rarr;</a>
+  </article>
+{% endfor %}
+</div>
+{% for r in past %}
+<p class="research-past-link" markdown="0"><a href="{{ r.url | relative_url }}">{{ r.title }} &rarr;</a></p>
+{% endfor %}

@@ -1,0 +1,65 @@
+<header class="site-header">
+<div class="ucb-bar">
+  <div class="container" style="max-width: var(--container-max);">
+    <a href="https://www.berkeley.edu">UC Berkeley</a>
+    <span class="ucb-bar-sep" aria-hidden="true">|</span>
+    <a href="https://www.lbl.gov">Berkeley Lab</a>
+  </div>
+</div>
+
+  <div class="container" style="max-width: var(--container-max);">
+    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.name | escape }}</a>
+  </div>
+
+  <nav class="navbar navbar-expand-md" aria-label="Main">
+    <div class="container" style="max-width: var(--container-max);">
+      <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+          </li>
+          {% for nav in site.nav_pages %}
+          <li class="nav-item{% if nav.dropdown or nav.children %} has-dropdown{% endif %}">
+            {% if nav.url %}
+            <a class="nav-link" href="{{ nav.url }}">{{ nav.label }}</a>
+            {% else %}
+            {% capture nav_path %}/{{ nav.name }}/{% endcapture %}
+            {% assign is_active = false %}{% if page.url contains nav_path %}{% assign is_active = true %}{% endif %}
+            {% for extra in nav.also_active %}{% if page.url contains extra %}{% assign is_active = true %}{% endif %}{% endfor %}
+            <a class="nav-link{% if is_active %} active{% endif %}" href="{{ nav_path | relative_url }}">{% if nav.label %}{{ nav.label }}{% else %}{{ nav.name | capitalize }}{% endif %}</a>
+            {% if nav.dropdown or nav.children %}
+            {% if nav.dropdown %}{% assign sub = site[nav.dropdown] | sort: "order" %}{% else %}{% assign sub = nav.children %}{% endif %}
+            <button class="nav-dropdown-toggle" type="button" aria-expanded="false" aria-controls="menu-{{ nav.name }}" aria-label="Show {{ nav.label | default: nav.name | capitalize }} pages">
+              <svg class="icon" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 4.5 6 8.5 10 4.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            </button>
+            <ul class="nav-dropdown" id="menu-{{ nav.name }}">
+              {% for item in sub %}<li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label | default: item.short_title | default: item.title }}</a></li>{% endfor %}
+            </ul>
+            {% endif %}
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        <button class="search-toggle" id="searchToggle" aria-label="Search site">
+          {% include icon.html name="search" %}
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Search overlay -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search the site">
+<div class="search-modal">
+<div class="search-input-wrapper">
+{% include icon.html name="search" class="search-input-icon" %}
+<input type="text" class="search-input" id="searchInput" placeholder="Search pages..." autocomplete="off" aria-label="Search pages">
+<kbd class="search-kbd">ESC</kbd>
+</div>
+<div class="search-results" id="searchResults"></div>
+</div>
+</div>

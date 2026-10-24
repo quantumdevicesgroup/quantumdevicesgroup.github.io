@@ -1,0 +1,49 @@
+---
+layout: default
+---
+{% assign grp = site.data.groups | where: "key", page.group | first %}
+<div class="fade-in-section person-page">
+  <p class="breadcrumb-line"><a href="{{ '/team/' | relative_url }}">Team</a> &rsaquo; {{ page.name }}</p>
+
+  <div class="person-head">
+    {% if page.photo %}<img src="{{ page.photo | prepend: '/images/' | relative_url }}" class="person-photo" alt="{{ page.name }}"{% if page.photo_position %} style="object-position: {{ page.photo_position }}"{% endif %}>{% endif %}
+    <div>
+      <h1 class="person-name">{% if page.title_prefix %}{{ page.title_prefix }} {% endif %}{{ page.name }}</h1>
+      {% if page.positions %}
+        <ul class="person-positions">{% for p in page.positions %}<li>{{ p | markdownify | remove: '<p>' | remove: '</p>' }}</li>{% endfor %}</ul>
+      {% else %}
+        <p class="person-role">{{ grp.role }}{% if page.dept %}, {{ page.dept }}{% endif %}{% if page.institution %}, {{ page.institution }}{% endif %}{% if page.tenure %} &middot; {{ page.tenure }}{% endif %}</p>
+        {% if page.coadvisor %}<p class="person-meta">Co-advisor: {{ page.coadvisor }}</p>{% endif %}
+        {% if page.next_position %}<p class="person-meta">Next: {{ page.next_position }}</p>{% endif %}
+        {% if page.thesis %}<p class="person-meta">Thesis: <a href="{{ page.thesis_url }}">{{ page.thesis }}</a></p>{% endif %}
+      {% endif %}
+      <div class="person-links">
+        {% if page.email %}<a href="mailto:{{ page.email }}" class="icon-link" title="Email" aria-label="Email">{% include icon.html name="envelope" %}</a>{% endif %}
+        {% if page.website %}<a href="{{ page.website }}" class="icon-link" title="Website" aria-label="Website">{% include icon.html name="house" %}</a>{% endif %}
+        {% if page.google_scholar %}<a href="{{ page.google_scholar }}" class="icon-link" title="Google Scholar" aria-label="Google Scholar">{% include icon.html name="google-scholar" %}</a>{% endif %}
+        {% if page.github %}<a href="{{ page.github }}" class="icon-link" title="GitHub" aria-label="GitHub">{% include icon.html name="github" %}</a>{% endif %}
+      </div>
+      {% if page.office %}<p class="person-meta">Office: {{ page.office }}</p>{% endif %}
+    </div>
+  </div>
+
+  {% if content != "" %}
+  <div class="person-bio">
+    {{ content }}
+  </div>
+  {% endif %}
+
+  {% if page.education %}
+  <h2>Education</h2>
+  <ul>{% for e in page.education %}<li>{{ e }}</li>{% endfor %}</ul>
+  {% endif %}
+
+  {% if page.pub_count > 0 %}
+  <h2>Group publications <span class="count-badge">{{ page.pub_count }}</span></h2>
+  <p class="pub-download"><a href="{{ page.url | append: 'publications.bib' | relative_url }}" download>&darr; Download as BibTeX</a></p>
+  <div class="pub-list pub-list-flat">
+  {% capture publist %}{% bibliography --query @*[author~={{ page.pub_query }},year>={{ page.since }}] %}{% endcapture %}{{ publist }}
+{% include pub_legend.html list=publist %}
+  </div>
+  {% endif %}
+</div>

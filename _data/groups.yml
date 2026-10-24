@@ -1,0 +1,33 @@
+# Team-page sections, in display order. `key` matches `group:` in _people/*.md.
+- key: pi
+  title: Principal Investigator
+  role: Principal Investigator
+- key: postdoc
+  title: Postdocs
+  role: Postdoctoral Researcher
+- key: grad
+  title: Graduate students
+  role: Graduate Student
+- key: undergrad
+  title: Undergraduate researchers
+  role: Undergraduate Researcher
+- key: alumni-grad
+  title: Graduate students
+  role: Former Graduate Student
+  alumni: true
+- key: alumni-postdoc
+  title: Postdocs
+  role: Former Postdoc
+  alumni: true
+- key: alumni-undergrad
+  title: Undergraduate students
+  role: Former Undergraduate Researcher
+  alumni: true
+- key: alumni-visitor
+  title: Visiting students and summer interns
+  role: Former Visiting Student
+  alumni: true
+- key: alumni-visiting-professor
+  title: Visiting professors
+  role: Former Visiting Professor
+  alumni: true

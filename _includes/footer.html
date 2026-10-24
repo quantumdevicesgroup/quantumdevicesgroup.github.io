@@ -1,0 +1,37 @@
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h2 class="footer-heading">{{ site.name }}</h2>
+      <p>
+        {{ site.alternate_names | first }}, {{ site.institution }}<br>
+        {{ site.address }}
+      </p>
+    </div>
+    <div>
+      <h2 class="footer-heading">Contact</h2>
+      <p>
+        <a href="mailto:{{ site.email }}">{% include icon.html name="envelope" %} {{ site.email }}</a><br>
+        <a href="{{ '/join/' | relative_url }}">Open positions</a>
+      </p>
+    </div>
+    <div>
+      <h2 class="footer-heading">Links</h2>
+      <p>
+        {% if site.links.google_scholar and site.links.google_scholar != "" %}<a href="{{ site.links.google_scholar }}">{% include icon.html name="google-scholar" %} Google Scholar</a><br>{% endif %}
+        <a href="https://eecs.berkeley.edu">Berkeley EECS</a><br>
+        <a href="https://physics.berkeley.edu">Berkeley Physics</a><br>
+        <a href="https://materialssciences.lbl.gov">Berkeley Lab Materials Sciences</a><br>
+        {% if site.links.github and site.links.github != "" %}<a href="{{ site.links.github }}">{% include icon.html name="github" %} GitHub</a>{% endif %}
+      </p>
+    </div>
+  </div>
+  <div class="footer-grid">
+    <div class="footer-copyright" style="grid-column: 1 / -1;">
+      Copyright &copy; {{ "now" | date: "%Y" }} UC Regents; all rights reserved &middot;
+      <a href="https://dap.berkeley.edu/get-help/report-web-accessibility-issue">Accessibility</a> &middot;
+      <a href="https://ophd.berkeley.edu/policies-and-procedures/nondiscrimination-policy-statement">Nondiscrimination</a>
+    </div>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/site.js' | relative_url }}"></script>

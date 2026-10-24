@@ -1,0 +1,200 @@
+// =============================================================
+// Team page and person pages
+// =============================================================
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-4);
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+a.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-bottom: 3px solid var(--berkeley-blue);
+  padding: var(--space-6) var(--space-4) var(--space-4);
+  color: inherit;
+  @media (max-width: 640px) { padding: var(--space-4) var(--space-2) var(--space-3); }
+  transition: box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
+
+  &:hover {
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-bottom-color: var(--california-gold);
+  }
+
+  .team-photo {
+    width: min(150px, 100%);
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 25%;
+    margin-bottom: var(--space-4);
+    background: var(--bg-secondary);
+  }
+
+  .team-name {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--berkeley-blue);
+    line-height: 1.25;
+  }
+
+  .team-info {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: var(--space-1);
+  }
+}
+
+.team-card-join {
+  justify-content: center;
+  background: var(--bg-secondary) !important;
+  border-style: dashed !important;
+  border-bottom-style: solid !important;
+
+  .team-join-plus {
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--medalist);
+    margin-bottom: var(--space-2);
+  }
+}
+
+// PI card
+.pi-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-8);
+  align-items: center;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .pi-photo {
+    width: 160px;
+    height: 213px;
+    object-fit: cover;
+    @media (max-width: 640px) { margin: 0 auto; }
+  }
+
+  .pi-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--medalist-text);
+    margin: 0;
+  }
+
+  .pi-name {
+    margin: var(--space-1) 0 var(--space-3);
+    font-size: 2rem;
+    &::after { display: none; }
+  }
+}
+
+.person-positions {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  li { padding: 0.1rem 0; color: var(--text-secondary); }
+}
+
+// Tables (undergraduates, alumni)
+.table-card { padding: 0 !important; overflow-x: auto; }
+
+.alumni-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    text-align: left;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--berkeley-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid #eee;
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td { background: #fafbfc; }
+  tr:last-child td { border-bottom: none; }
+
+  // Icon links next to names: 24x24px tap targets (WCAG 2.5.8)
+  .ext-link {
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 24px;
+    vertical-align: middle;
+    margin-left: 0.15rem;
+    &:hover { color: var(--berkeley-blue); }
+  }
+}
+
+// Person page
+.breadcrumb-line {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.person-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-8);
+  align-items: start;
+  margin-top: var(--space-4);
+
+  @media (max-width: 640px) { grid-template-columns: 1fr; }
+
+  .person-photo {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    object-position: 50% 25%;
+    border-bottom: 4px solid var(--california-gold);
+  }
+
+  .person-name { margin-top: 0; margin-bottom: var(--space-3); }
+  .person-role { font-size: 1.125rem; color: var(--text-primary); margin-bottom: var(--space-2); }
+  .person-meta { margin-bottom: var(--space-1); }
+  .person-links { display: flex; gap: var(--space-1); margin: var(--space-3) 0; }
+}
+
+.person-bio { margin-top: var(--space-6); }
+
+// Deadline column: keep short dates on one line on wide screens
+@media (min-width: 900px) { .alumni-table td.nowrap-sm { min-width: 11rem; } }
+
+.country-programs {
+  padding-left: 1.1rem;
+  li { margin-bottom: var(--space-2); max-width: none; }
+  .text-muted { font-size: 0.875rem; }
+}

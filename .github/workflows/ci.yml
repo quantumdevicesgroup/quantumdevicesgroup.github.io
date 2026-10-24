@@ -1,0 +1,45 @@
+name: CI
+
+# Builds the site and checks internal links on every pull request.
+# Deployment happens separately in deploy.yml on push to `main`.
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Deployment uses 4.0; 3.4 is kept so local setups on the previous
+        # stable Ruby keep working.
+        ruby: ['3.4', '4.0']
+    name: build (ruby ${{ matrix.ruby }})
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Build site
+        run: bundle exec jekyll build --strict_front_matter
+        env:
+          JEKYLL_ENV: production
+
+
+      - name: Check internal links
+        run: |
+          gem install html-proofer --no-document
+          htmlproofer ./_site \
+            --disable-external \
+            --allow-missing-href \
+            --ignore-missing-alt \
+            --no-enforce-https

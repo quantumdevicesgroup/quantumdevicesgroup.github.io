@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<article class="news-post fade-in-section" itemscope itemtype="http://schema.org/BlogPosting">
+  <p class="breadcrumb-line"><a href="{{ '/news/' | relative_url }}">News</a> &rsaquo; {{ page.date | date: "%Y" }}</p>
+  <h1 itemprop="name headline">{{ page.title | escape }}</h1>
+  <p class="news-post-meta">
+    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
+    {% for t in page.tags %}<span class="news-tag">{{ t }}</span>{% endfor %}
+  </p>
+  {% if page.image and page.photo_count == 0 %}
+  <figure class="post-figure post-figure-single{% if page.image contains '.png' %} post-graphic{% endif %}"><img src="{{ page.image | relative_url }}" alt=""></figure>
+  {% endif %}
+  <div class="news-post-body" itemprop="articleBody">
+    {{ content }}
+  </div>
+  {% assign related = "" | split: "" %}
+  {% for post in site.posts %}
+    {% if post.url != page.url %}
+      {% assign shared = false %}
+      {% for t in post.tags %}{% if page.tags contains t %}{% assign shared = true %}{% endif %}{% endfor %}
+      {% if shared %}{% assign related = related | push: post %}{% endif %}
+    {% endif %}
+    {% if related.size >= 3 %}{% break %}{% endif %}
+  {% endfor %}
+  {% if related.size > 0 %}
+  <section class="news-related">
+    <h2>Related news</h2>
+    <div class="news-feed">{% for post in related %}{% include news_item.html post=post %}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  <nav class="news-post-nav" aria-label="More news">
+    {% if page.previous %}<a href="{{ page.previous.url | relative_url }}" class="prev">&larr; Older: {{ page.previous.title }}</a>{% else %}<span></span>{% endif %}
+    {% if page.next %}<a href="{{ page.next.url | relative_url }}" class="next">Newer: {{ page.next.title }} &rarr;</a>{% endif %}
+  </nav>
+</article>

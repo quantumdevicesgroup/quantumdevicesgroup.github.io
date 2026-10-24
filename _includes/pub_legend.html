@@ -1,0 +1,2 @@
+{% comment %} Explains the * mark, shown under a paper list that uses it. Pass list= the rendered list. {% endcomment %}
+{% if include.list contains '*</a>' or include.list contains '*,' or include.list contains '*</p>' %}<p class="pub-legend">* Equal contribution</p>{% endif %}

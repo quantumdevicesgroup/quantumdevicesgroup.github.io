@@ -1,0 +1,289 @@
+# Group publications, newest first. scripts/build_bib.py turns this list into
+# assets/ref.bib, taking metadata from Zotero (or Crossref/arXiv if a paper is
+# not in Zotero). To add a paper: add its doi (and arxiv id, if any) at the
+# top, then run  python3 scripts/build_bib.py
+#
+# Optional fields:
+#   selected: true            no longer used (kept for reference); home-page slides come from highlight
+#   equal: [Surname, ...]     equal-contribution authors (marked with *)
+#   links: [{label, url}]     extra buttons, e.g. News & Views, talk video
+#   venue_note: text          shown after the venue, e.g. News & Views
+#   fix: {title: ...}         override a wrong field from Zotero/Crossref
+#   thrusts: [slug, ...]      research directions (_research/*.md) this paper belongs to
+#   highlight: text           two-sentence summary; puts the paper in the Research highlights
+#                             sliders on the home page and on its research pages (thrusts)
+#   home: false               keep a highlight off the home page (research pages only)
+#   image: /images/...        figure for its highlight slide
+#   group: true/false         override the automatic group-paper rule (2022 on, or PI last author)
+
+# 2026: Taking the heat off tantalum
+- doi: 10.1038/s41563-026-02766-5
+  thrusts: [superconducting-qubits]
+  venue_note: News & Views
+
+# 2026: Resolving and resetting the charge environment of single T-centers in silicon p-i-n waveguides
+- arxiv: '2608.15993'
+  thrusts: [spin-qubits]
+
+# 2026: Point defects in semiconductors: Friends and foes for quantum technologies
+- doi: 10.1557/s43577-026-01095-x
+  thrusts: [spin-qubits]
+
+# 2026: Interface Piezoelectric Loss in Superconducting Qubits
+- arxiv: '2605.15554'
+  thrusts: [superconducting-qubits]
+  equal: [Zhou, Yu]
+  highlight: 'Superconducting qubits on silicon have a previously unrecognized loss channel: they radiate phonons through a weak piezoelectric response at the aluminum–silicon interface. We measure this loss in a transmon embedded in a surface acoustic wave resonator and predict that it overtakes two-level-system loss at high qubit frequencies.'
+  image: /images/highlights/zhou-2026-interface-piezoelectric-loss.png
+
+# 2026: Entanglement of a nuclear spin qubit register in silicon photonics
+- doi: 10.1038/s41565-025-02066-0
+  arxiv: '2504.15467'
+  thrusts: [spin-qubits]
+  selected: true
+  links:
+    - {label: "News & Views", url: "https://www.nature.com/articles/s41565-025-02094-w"}
+  highlight: We realize a three-qubit register in silicon photonics from the electron spin of a T center and two nearby nuclear spins, with nuclear-spin coherence times up to 112 ms and entangling gates between the nuclear spins. Combined with the T center's telecom-band optical interface, these are key ingredients for a scalable quantum network node in silicon.
+  image: /images/highlights/song-2026-nuclear-spin-register.jpg
+
+# 2026: Observation of interface piezoelectricity in superconducting devices on silicon
+- doi: 10.1038/s41467-025-67066-z
+  arxiv: '2409.10626'
+  thrusts: [superconducting-qubits]
+  selected: true
+  highlight: Bulk silicon is not piezoelectric, but the broken symmetry at aluminum–silicon interfaces produces a piezoelectric response that we detect from room temperature down to millikelvin temperatures. This effect, predicted decades ago and observed here for the first time in superconducting devices, is a significant surface loss channel for superconducting qubits.
+  image: /images/highlights/zhou-2026-interface-piezoelectricity.png
+
+# 2025: Laser-induced spectral diffusion of T centers in silicon nanophotonic devices
+- doi: 10.1103/x2cv-2gcw
+  arxiv: '2504.08898'
+  thrusts: [spin-qubits]
+  highlight: T centers in silicon nanophotonic devices have broadened optical lines, a challenge for generating indistinguishable photons. By tracking the optical frequency of single T centers in a photonic crystal cavity from nanoseconds to milliseconds, we find that the line is stable in the dark and identify laser-induced processes as the dominant source of spectral diffusion.
+  image: /images/highlights/zhang-2025-laser-induced-spectral-diffusion.png
+  home: false
+
+# 2025: Multiplexed color centers in a silicon photonic cavity array
+- doi: 10.1364/OPTICA.564691
+  arxiv: '2501.17339'
+  thrusts: [spin-qubits]
+  highlight: We build arrays of photonic crystal cavities coupled to a common silicon bus waveguide, giving simultaneous access to individually addressable, cavity-enhanced T centers. We demonstrate frequency-multiplexed operation of two T centers in separate cavities, a route to efficient on-chip and long-distance entanglement distribution.
+  image: /images/highlights/komza-2025-cavity-array.png
+  home: false
+
+# 2025: Probing negative differential resistance in silicon with a P-I-N diode-integrated T center ensemble
+- arxiv: '2501.11888'
+  thrusts: [spin-qubits]
+
+# 2025: Non-Markovian dynamics of a superconducting qubit in a phononic bandgap
+- doi: 10.1038/s41567-024-02740-5
+  arxiv: '2312.01031'
+  thrusts: [superconducting-qubits]
+  selected: true
+  links:
+    - {label: "News & Views", url: "https://www.nature.com/articles/s41567-024-02775-8"}
+  highlight: Embedding a transmon qubit in a phononic-bandgap metamaterial suppresses phonon emission by the two-level-system defects it couples to, driving the qubit's dissipation into a non-Markovian regime. Co-designing the phonon environment opens a path to qubits that are both smaller and longer-lived.
+  image: /images/highlights/odeh-2025-phononic-bandgap-qubit.jpg
+
+# 2024: Acceptor-induced bulk dielectric loss in superconducting circuits on silicon
+- doi: 10.1103/PhysRevX.14.041022
+  arxiv: '2402.17155'
+  thrusts: [superconducting-qubits]
+  highlight: Boron acceptors in silicon behave like two-level systems, and even part-per-billion concentrations of boron in the substrate are enough to make superconducting qubits decay. By measuring resonators on silicon wafers with different boron concentrations, we give the first detailed microscopic picture of a two-level-system bath and show that substrate purity is critical for next-generation superconducting quantum processors.
+  image: /images/highlights/zhang-2024-acceptor-key-image.png
+  selected: true
+  equal: [Zhang, Godeneli]
+
+# 2024: Indistinguishable photons from an artificial atom in silicon photonics
+- doi: 10.1038/s41467-024-51265-1
+  arxiv: '2211.09305'
+  thrusts: [spin-qubits]
+  highlight: A G center, an artificial atom in a silicon waveguide, emits high-purity single photons in the telecom O-band. Using time-delayed two-photon interference, we show that these photons are indistinguishable, establishing artificial atoms in silicon photonics as quantum light sources for photonic quantum networks and processors.
+  image: /images/highlights/komza-2024-indistinguishable-photons.png
+  home: false
+  selected: true
+  equal: [Komza, Samutpraphoot]
+
+# 2024: A Nanomechanical Atomic Force Qubit
+- arxiv: '2407.15387'
+  thrusts: [quantum-transduction]
+
+# 2024: Toward high-fidelity quantum information processing and quantum simulation with spin qubits and phonons
+- doi: 10.1103/PhysRevB.110.045419
+  arxiv: '2402.16960'
+  thrusts: [spin-qubits]
+
+# 2024: Compressive-Sensing-Enhanced First-Principles Calculation of Photoluminescence Spectra in Color Centers: A Comparison between Theory and Experiment for the G Center in Silicon
+- arxiv: '2402.08067'
+  thrusts: [spin-qubits]
+
+# 2024: Midgap state requirements for optically active quantum defects
+- doi: 10.1088/2633-4356/ad1d38
+  arxiv: '2302.10767'
+  thrusts: [spin-qubits]
+
+# 2023: High-throughput identification of spin-photon interfaces in silicon
+- doi: 10.1126/sciadv.adh8617
+  arxiv: '2303.01594'
+  thrusts: [spin-qubits]
+
+# 2022: Three-dimensional programming of nanolaser arrays through a single optical microfiber
+- doi: 10.1364/OPTICA.471715
+
+# 2022: First principles study of the T-center in silicon
+- doi: 10.1103/PhysRevMaterials.6.L053201
+  arxiv: '2202.04149'
+  thrusts: [spin-qubits]
+
+# 2021: Collapse and Revival of an Artificial Atom Coupled to a Structured Photonic Reservoir
+- doi: 10.1103/PhysRevX.11.041043
+  arxiv: '2001.03240'
+  thrusts: [superconducting-qubits]
+  equal: [Ferreira, Banker]
+
+# 2021: Quantum Electrodynamics in a Topological Waveguide
+- doi: 10.1103/PhysRevX.11.011015
+  arxiv: '2005.03802'
+  thrusts: [superconducting-qubits]
+  links:
+    - {label: "Physics Viewpoint", url: "https://physics.aps.org/articles/v14/11"}
+  equal: [Kim, Zhang]
+
+# 2020: Superconducting qubit to optical photon transduction
+- doi: 10.1038/s41586-020-3038-6
+  arxiv: '2004.04838'
+  thrusts: [quantum-transduction]
+  highlight: We convert the microwave-frequency excitation of a superconducting transmon qubit into an optical photon, using a nanomechanical resonator that couples to the qubit piezoelectrically and to light through radiation pressure. Detecting the emitted photons over an optical fiber, we record the qubit's quantum Rabi oscillations, a step toward optical networks that link remote superconducting quantum processors.
+  image: /images/highlights/mirhosseini-2020-qubit-optical-transduction.png
+  home: false
+  selected: true
+  equal: [Mirhosseini, Sipahigil, Kalaee]
+  links:
+    - {label: "Talk", url: "https://youtu.be/3rX97A2n9cU"}
+
+# 2020: Nano-acoustic resonator with ultralong phonon lifetime
+- doi: 10.1126/science.abc7312
+  thrusts: [quantum-transduction]
+  fix: {title: "Nano-acoustic resonator with ultralong phonon lifetime"}  # Zotero has the arXiv title
+  arxiv: '1901.04129'
+  equal: [MacCabe, Ren]
+
+# 2019: Microwave-to-optical conversion via four-wave mixing in a cold ytterbium ensemble
+- doi: 10.1103/PhysRevA.100.012307
+  arxiv: '1904.08999'
+  thrusts: [quantum-transduction]
+
+# 2019: Cavity quantum electrodynamics with atom-like mirrors
+- doi: 10.1038/s41586-019-1196-1
+  arxiv: '1809.09752'
+  thrusts: [superconducting-qubits]
+  equal: [Mirhosseini, Kim]
+
+# 2019: Telecom-Band Quantum Optics with Ytterbium Atoms and Silicon Nanophotonics
+- doi: 10.1103/PhysRevApplied.11.034044
+  arxiv: '1810.12821'
+  thrusts: [quantum-transduction]
+
+# 2018: Strain engineering of the silicon-vacancy center in diamond
+- doi: 10.1103/PhysRevB.97.205444
+  arxiv: '1801.09833'
+  thrusts: [past-research]
+  equal: [Meesala, Sohn]
+
+# 2018: Phonon Networks with Silicon-Vacancy Centers in Diamond Waveguides
+- doi: 10.1103/PhysRevLett.120.213603
+  arxiv: '1801.01904'
+  thrusts: [past-research]
+
+# 2018: Controlling the coherence of a diamond spin qubit through its strain environment
+- doi: 10.1038/s41467-018-04340-3
+  arxiv: '1706.03881'
+  thrusts: [past-research]
+  equal: [Sohn, Meesala, Pingault]
+
+# 2018: Superconducting metamaterials for waveguide quantum electrodynamics
+- doi: 10.1038/s41467-018-06142-z
+  arxiv: '1802.01708'
+  thrusts: [superconducting-qubits]
+
+# 2018: Photon-mediated interactions between quantum emitters in a diamond nanocavity
+- doi: 10.1126/science.aau4691
+  arxiv: '1807.04265'
+  thrusts: [past-research]
+  equal: [Evans, Bhaskar, Sukachev]
+
+# 2018: All-optical nanoscale thermometry with silicon-vacancy centers in diamond
+- doi: 10.1063/1.5029904
+  arxiv: '1708.05419'
+  thrusts: [past-research]
+
+# 2017: Quantum Nonlinear Optics with a Germanium-Vacancy Color Center in a Nanoscale Diamond Waveguide
+- doi: 10.1103/PhysRevLett.118.223603
+  arxiv: '1612.03036'
+  thrusts: [past-research]
+
+# 2017: Optical and microwave control of germanium-vacancy center spins in diamond
+- doi: 10.1103/PhysRevB.96.081201
+  arxiv: '1612.02947'
+  thrusts: [past-research]
+  equal: [Siyushev, Metsch]
+
+# 2017: Silicon-Vacancy Spin Qubit in Diamond: A Quantum Memory Exceeding 10 ms with Single-Shot State Readout
+- doi: 10.1103/PhysRevLett.119.223602
+  arxiv: '1708.08852'
+  thrusts: [past-research]
+  equal: [Sukachev, Sipahigil, Nguyen]
+
+# 2017: Fiber-Coupled Diamond Quantum Nanophotonic Interface
+- doi: 10.1103/PhysRevApplied.8.024026
+  arxiv: '1612.05285'
+  thrusts: [past-research]
+
+# 2017: Scalable focused ion beam creation of nearly lifetime-limited single quantum emitters in diamond nanostructures
+- doi: 10.1038/ncomms15376
+  arxiv: '1610.09492'
+  thrusts: [past-research]
+  equal: [Schröder, Trusheim, Walsh]
+
+# 2016: Narrow-Linewidth Homogeneous Optical Emitters in Diamond Nanostructures via Silicon Ion Implantation
+- doi: 10.1103/PhysRevApplied.5.044010
+  arxiv: '1512.03820'
+  thrusts: [past-research]
+  equal: [Evans, Sipahigil]
+
+# 2016: An integrated diamond nanophotonics platform for quantum-optical networks
+- doi: 10.1126/science.aah6875
+  arxiv: '1608.05147'
+  thrusts: [past-research]
+  equal: [Sipahigil, Evans, Sukachev]
+
+# 2015: Electron–phonon processes of the silicon-vacancy centre in diamond
+- doi: 10.1088/1367-2630/17/4/043011
+  arxiv: '1411.2871'
+  thrusts: [past-research]
+  equal: [Jahnke, Sipahigil]
+
+# 2015: Phonon-Induced Population Dynamics and Intersystem Crossing in Nitrogen-Vacancy Centers
+- doi: 10.1103/PhysRevLett.114.145502
+  arxiv: '1406.4065'
+  thrusts: [past-research]
+
+# 2015: State-selective intersystem crossing in nitrogen-vacancy centers
+- doi: 10.1103/PhysRevB.91.165201
+  arxiv: '1412.4865'
+  thrusts: [past-research]
+
+# 2014: Indistinguishable Photons from Separated Silicon-Vacancy Centers in Diamond
+- doi: 10.1103/PhysRevLett.113.113602
+  arxiv: '1406.4268'
+  thrusts: [past-research]
+  equal: [Sipahigil, Jahnke]
+
+# 2014: All-Optical Initialization, Readout, and Coherent Preparation of Single Silicon-Vacancy Spins in Diamond
+- doi: 10.1103/PhysRevLett.113.263602
+  arxiv: '1410.1355'
+  thrusts: [past-research]
+
+# 2012: Quantum Interference of Single Photons from Remote Nitrogen-Vacancy Centers in Diamond
+- doi: 10.1103/PhysRevLett.108.143601
+  arxiv: '1112.3975'
+  thrusts: [past-research]

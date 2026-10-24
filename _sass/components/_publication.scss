@@ -1,0 +1,285 @@
+// =============================================================
+// Publications — title / authors / venue, physics-journal style
+// =============================================================
+
+.pub-list {
+  ol.bibliography {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 var(--space-6);
+  }
+
+  // Year headings from {% bibliography --group_by year %}
+  h2.bibliography, h3.bibliography {
+    font-size: 1.5rem;
+    margin: var(--space-10) 0 var(--space-2);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-color);
+    &::after { display: none; }
+  }
+}
+
+.pub-entry {
+  padding: var(--space-4) 0 var(--space-4);
+  border-bottom: 1px solid #eee;
+  position: relative;
+
+  li:last-child > & { border-bottom: none; }
+
+  .pub-title {
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.4;
+    a { color: var(--text-primary); }
+    a:hover { color: var(--berkeley-blue); }
+  }
+
+  .pub-authors {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    margin-top: var(--space-1);
+  }
+
+  a.pub-member {
+    color: var(--berkeley-blue);
+    font-weight: 600;
+  }
+
+  .pub-venue {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    margin-top: var(--space-1);
+  }
+
+  .pub-note {
+    display: inline-block;
+    margin-left: var(--space-2);
+    padding: 0 var(--space-2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--berkeley-blue);
+    background: rgba(253, 181, 21, 0.25);
+    border-radius: var(--radius-sm);
+  }
+
+  .pub-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+
+  .pub-abstract p {
+    font-size: 0.9375rem;
+    max-width: none;
+    background-color: var(--bg-secondary);
+    border-left: 3px solid var(--california-gold);
+    padding: var(--space-3) var(--space-4);
+    margin: var(--space-2) 0 0;
+  }
+}
+
+// Collapsible bibtex/abstract
+.pub-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-slow);
+
+  &.show {
+    max-height: 1200px;
+    padding-top: var(--space-2);
+  }
+
+  pre {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4);
+    margin: var(--space-2) 0 0;
+    font-size: 0.8125rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: var(--text-primary);
+  }
+}
+
+// Copy button inside bibtex blocks
+.copy-wrapper { position: relative; }
+
+.copy-btn {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-2);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: var(--space-1) var(--space-2);
+  font-size: 0.8125rem;
+  line-height: 1;
+  opacity: 0;
+  z-index: 1;
+
+  .copy-wrapper:hover &, &:focus { opacity: 1; }
+  &:hover, &.copied { color: var(--berkeley-blue); border-color: var(--berkeley-blue); opacity: 1; }
+}
+
+// Controls: search, type chips, member menu
+.pub-intro { max-width: 80ch; }
+
+.pub-controls {
+  background: var(--bg-secondary);
+  border-top: 3px solid var(--berkeley-blue);
+  padding: var(--space-4) var(--space-4) var(--space-2);
+  margin: var(--space-6) 0 var(--space-2);
+}
+
+.pub-search {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid #c8cdd2;
+  border-radius: var(--radius-sm);
+  background-color: #fff;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: var(--berkeley-blue);
+    box-shadow: 0 0 0 3px rgba(0, 50, 98, 0.15);
+  }
+}
+
+.pub-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.chip-group { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.filter-chip {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid #c8cdd2;
+  border-radius: var(--radius-full);
+  background: #fff;
+  color: #555;
+  cursor: pointer;
+
+  &:hover { border-color: var(--berkeley-blue); color: var(--berkeley-blue); }
+  &.active { background: var(--berkeley-blue); border-color: var(--berkeley-blue); color: #fff; }
+}
+
+.member-filter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #555;
+
+  select {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #c8cdd2;
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--text-primary);
+    max-width: 16rem;
+  }
+}
+
+.pub-count {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: var(--space-3) 0 var(--space-1);
+}
+
+.pub-member-link { font-weight: 600; margin: 0 0 var(--space-2); }
+
+.pub-download a { font-weight: 600; }
+
+.count-badge {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--berkeley-blue);
+  background: rgba(253, 181, 21, 0.35);
+  border-radius: var(--radius-full);
+  padding: 0.1rem 0.6rem;
+  margin-left: var(--space-2);
+}
+
+.pub-list li { max-width: none; }
+
+// Publication buttons: small outlined labels so the paper title, not the
+// links, carries the visual weight. DOI and arXiv keep their colours as text.
+.pub-entry .pub-actions {
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+
+  .btn-pill {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+    padding: 0.05rem 0.5rem;
+    background: transparent;
+    border: 1px solid #d5d9dd;
+    color: var(--pacific);
+
+    &:hover { border-color: var(--berkeley-blue); color: var(--berkeley-blue); background: transparent; text-decoration: none; }
+    &.btn-doi { color: var(--berkeley-blue); }
+    &.btn-arxiv { color: #a31515; }
+    &.btn-arxiv:hover { border-color: #a31515; color: #a31515; }
+  }
+}
+
+// Bottom row of the publication controls: count on the left, links on the right
+.pub-footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-6);
+  margin-top: var(--space-3);
+  .pub-count { margin: 0; }
+  .pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+}
+
+// Single row: member menu, count, then the links pushed to the right
+.pub-controls .pub-filters {
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-2) var(--space-6);
+  .pub-count { margin: 0; }
+  .pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    margin: 0 0 0 auto;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+}
+.pub-controls { padding-bottom: var(--space-4); }

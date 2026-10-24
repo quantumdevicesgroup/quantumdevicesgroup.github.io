@@ -1,0 +1,118 @@
+# Postdoc fellowships listed on /join/postdoc-fellowships/.
+# Moved from the Notion page "Postdoc fellowships" on 2026-10-24. Links,
+# names and deadlines were checked against each program's page that day;
+# `deadline` is the most recent one known, so update it as calls reopen.
+#
+# Entries without `country` go in the main table (those whose last known
+# deadline is 2025 or earlier are kept at the end). Entries with `country`
+# are listed briefly under "Country-specific programs".
+
+- name: Miller Research Fellowship (UC Berkeley)
+  url: https://miller.berkeley.edu/nominate-apply/miller-research-fellowship
+  eligibility: Domestic and international. For recent or upcoming PhDs, nominated by faculty.
+  deadline: September 10, 2026 (nominations, 2027–2030 cycle)
+- name: IC Postdoctoral Research Fellowship Program (ODNI)
+  url: https://orise.orau.gov/icpostdoc/postdoc-research/index.html
+  eligibility: US citizens, PhD within five years. Topics change. There is usually one related to our research.
+  deadline: March 31, 2026
+- name: L'Oréal USA For Women in Science Fellowship
+  url: https://www.aaas.org/programs/loreal-usa-women-science
+  eligibility: Women postdocs in basic research; US citizen/perm resident at a US institution. $75,000 award, run with AAAS.
+  deadline: February 12, 2027 (open now)
+- name: Marie-Curie Fellowship
+  url: https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships
+  eligibility: 'Global fellowship: Europe → US'
+  deadline: September 9, 2026 (2027 call opens April 7, 2027)
+- name: Schmidt Science Fellows
+  url: https://schmidtsciencefellows.org/selection/who-can-apply/
+  eligibility: Any nationality; nominated by a partner institution. Recent PhD in natural sciences, engineering, math or computing, for an interdisciplinary project. $110,000/yr for 12–24 months.
+  deadline: July 13, 2026 (2027 cohort; nominations May 15, 2026)
+- name: Fulbright Visiting Scholar Program
+  url: https://fulbrightscholars.org/non-us-scholars/fulbright-visiting-scholar-program
+  eligibility: Non-US citizens of participating countries with a doctorate; apply through the home-country Fulbright commission or US embassy. 3–12 months.
+  deadline: Varies by country
+- name: National Quantum Fellowship Program
+  url: https://www.qubitcollaboratory.org/nqfp/
+  eligibility: US citizens.
+  deadline: March 31, 2025
+- name: NSF/ASEE eFellows Engineering Postdoctoral Fellowship
+  url: https://efellows.asee.org/eligibility
+  eligibility: US citizens or permanent residents; research within NSF Engineering, with a new (non-PhD) faculty advisor.
+  deadline: October 31, 2025
+
+# Country-specific programs
+- name: FWF Erwin Schrödinger Fellowship
+  country: Austria
+  url: https://www.fwf.ac.at/en/funding/portfolio/careers/erwin-schroedinger
+  eligibility: Postdocs with a link to Austrian research; 10–24 months abroad plus an optional return phase.
+  deadline: rolling
+- name: BAEF Research Fellowship
+  country: Belgium
+  url: https://baef.be/research-fellowships-be/
+  eligibility: Belgian nationals, no more than 2 years past the PhD. $55,000 plus health insurance for 12 months at a US host.
+  deadline: October 31, 2026
+- name: Banting Postdoctoral Fellowship
+  country: Canada
+  url: https://banting.fellowships-bourses.gc.ca/en/app-dem_elig-adm.html
+  eligibility: Canadian + Canadian PhD
+  deadline: September 2026, exact date varies by agency
+- name: Canada Postdoctoral Research Award
+  country: Canada
+  url: https://nserc-crsng.canada.ca/en/funding-opportunity/canada-postdoctoral-research-award-program
+  eligibility: 'Replaced the NSERC postdoctoral fellowship. To hold it abroad: Canadian citizen or permanent resident with a Canadian PhD, within 3 years of the PhD. CAD 70,000/yr for 2 years.'
+  deadline: October 17, 2026
+- name: DFF International Postdoctoral Grant
+  country: Denmark
+  url: https://dff.dk/en/apply-for-funding/see-what-you-can-apply-for/current-funding-opportunities/instruments/2026/november/dff-international-postdoctoral-grant-e26/
+  eligibility: Danish PhD within 3 years (or thesis due within 12 months); at least 12 months abroad.
+  deadline: November 5, 2026
+- name: Carlsberg Foundation Internationalisation Fellowships
+  country: Denmark
+  url: https://carlsbergfondet.dk/en/applicant/internationalisation-fellowships
+  eligibility: Danish, Greenlandic or Faroese PhD within 3 years and a strong Danish connection; 2–3 years, at least half abroad.
+  deadline: April 1, 2027
+- name: Walter Benjamin Programme (DFG)
+  country: Germany
+  url: https://www.dfg.de/en/research-funding/funding-opportunities/programmes/individual/walter-benjamin
+  eligibility: German Research Foundation funding for early-career postdocs, at a host institution in Germany or abroad; funding abroad requires ties to the German research system.
+  deadline: rolling
+- name: Humboldt Feodor Lynen Research Fellowship
+  country: Germany
+  url: https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/feodor-lynen-research-fellowship
+  eligibility: German citizens, or researchers integrated into German academia; PhD within 4 years. The host abroad must belong to the Humboldt Network.
+  deadline: rolling; selection in February, June and October
+- name: Rothschild Fellowships
+  country: Israel
+  url: https://www.yadhanadiv.org.il/wp-content/uploads/2026/08/Application-Guidelines-Rothschild-Fellows-2027-28.pdf
+  eligibility: Israeli permanent residents with a recent Israeli PhD, nominated by their university; first postdoc abroad, 1 year.
+  deadline: nominated by Israeli universities, 2027–28 round
+- name: JSPS Overseas Research Fellowships
+  country: Japan
+  url: https://www.jsps.go.jp/english/e-ab/index.html
+  eligibility: Japanese nationals or permanent residents of Japan, PhD within 5 years; 2 years abroad.
+  deadline: see the FY2027 guidelines
+- name: NWO Rubicon
+  country: Netherlands
+  url: https://www.nwo.nl/en/researchprogrammes/rubicon
+  eligibility: Recent PhD from the Kingdom of the Netherlands; 12–24 months at a foreign institution.
+  deadline: December 1, 2026
+- name: Swedish Research Council International Postdoc
+  country: Sweden
+  url: https://www.vr.se/english/applying-for-funding/calls/2025-11-11-international-postdoc-within-natural-and-engineering-sciences-autumn-call.html
+  eligibility: Swedish (or EUI) PhD within 2 years, employed through a Swedish organisation; at least two thirds of the grant period abroad.
+  deadline: September 15, 2026
+- name: Wenner-Gren Fellows
+  country: Sweden
+  url: https://www.swgc.org/sarskilda-stipendier
+  eligibility: Swedish citizens or permanent residents, PhD within 3 years; up to 3 years abroad, then 2 years in Sweden.
+  deadline: January 31, annually
+- name: SNSF Postdoc.Mobility
+  country: Switzerland
+  url: https://www.snf.ch/en/XIZpfY3iVS5KRRoD/funding/careers/postdoc-mobility
+  eligibility: Swiss citizens or C-permit holders, or a Swiss PhD with no postdoc abroad yet; within 3 years of the PhD. 24 months at a host abroad, with an optional return grant.
+  deadline: February 2, 2027; final call August 3, 2027
+- name: TÜBİTAK 2219 International Postdoctoral Research Fellowship
+  country: Turkey
+  url: https://tubitak.gov.tr/tr/burslar/doktora-sonrasi/arastirma-burs-programlari/2219-yurt-disi-doktora-sonrasi-arastirma-burs-programi
+  eligibility: Turkish citizens with a PhD, not currently employed abroad; up to 12 months at a top-ranked host.
+  deadline: September 15, 2026

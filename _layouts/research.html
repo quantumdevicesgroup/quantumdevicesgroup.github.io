@@ -1,0 +1,66 @@
+---
+layout: default
+---
+<div class="fade-in-section research-page">
+  {% include research_subnav.html %}
+  <h1>{{ page.title }}</h1>
+
+  <div class="research-lead">
+    {{ content }}
+  </div>
+
+  {% if page.topics %}
+  <h2>Recent topics</h2>
+  <ul class="topic-list">
+  {% for t in page.topics %}
+    <li class="topic-row">
+      <h3 class="topic-title">{{ t.title }}</h3>
+      <div class="topic-body">
+        {% if t.text %}<p class="topic-text">{{ t.text }}</p>{% endif %}
+        {% if t.note %}<p class="topic-note">{{ t.note }}</p>{% endif %}
+        {% if t.papers %}<p class="topic-papers">{% for pp in t.papers %}<a href="{{ pp.url }}">{{ pp.label }}</a>{% unless forloop.last %}<span aria-hidden="true"> · </span>{% endunless %}{% endfor %}</p>{% endif %}
+      </div>
+    </li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% unless page.past %}
+  {% capture highlights %}{% bibliography --query @*[thrusts~={{ page.slug }},highlighted=true] --template highlight %}{% endcapture %}
+  {% if highlights contains 'highlight-slide' %}
+  <h2>Research highlights</h2>
+  <div class="slider highlight-slider" data-slider><div class="slider-track">
+  {{ highlights }}
+  </div></div>
+  {% endif %}
+  {% endunless %}
+
+  {% if page.past %}
+  {% for sec in page.sections %}
+  <h2>{{ sec.title }}</h2>
+  {% if sec.text %}<p class="past-text">{{ sec.text }}</p>{% endif %}
+  <div class="pub-list pub-list-flat">
+  {% capture publist %}{% if sec.thrust == page.slug %}{% bibliography --query @*[thrusts~={{ sec.thrust }}] %}{% else %}{% bibliography --query @*[thrusts~={{ sec.thrust }},group=false] %}{% endif %}{% endcapture %}{{ publist }}
+  {% include pub_legend.html list=publist %}
+  </div>
+  {% endfor %}
+  {% else %}
+  <h2>Recent group publications on {{ page.topic | default: page.title }}</h2>
+  <p><a href="{{ '/publications/' | relative_url }}">All publications &rarr;</a></p>
+  <div class="pub-list pub-list-flat">
+  {% capture publist %}{% bibliography --query @*[thrusts~={{ page.slug }},group=true] %}{% endcapture %}{{ publist }}
+{% include pub_legend.html list=publist %}
+  </div>
+  {% endif %}
+
+  <h2>{% if page.past %}Current research directions{% else %}Other research directions{% endif %}</h2>
+  {% assign others = site.research | where_exp: "r", "r.slug != page.slug" | where_exp: "r", "r.past != true" | sort: "order" %}
+  <div class="research-tiles research-tiles-small">
+  {% for r in others %}
+    <a class="research-tile" href="{{ r.url | relative_url }}">
+      <span class="research-tile-img"><img src="{{ r.image | relative_url }}" alt="" loading="lazy"></span>
+      <span class="research-tile-title">{{ r.short_title | default: r.title }}</span>
+    </a>
+  {% endfor %}
+  </div>
+</div>

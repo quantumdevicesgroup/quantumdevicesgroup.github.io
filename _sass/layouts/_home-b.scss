@@ -1,0 +1,324 @@
+// =============================================================
+// Prototype home (/home-b/) and research pages: full-width hero,
+// blue research band, image tiles per research direction, highlights slider
+// =============================================================
+
+body { overflow-x: clip; }   // .full-bleed sections span the window without a sideways scrollbar
+
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+// Hero: full-width photo slider, flush under the header
+.hero,
+.fade-in-section > h1.visually-hidden:first-child + .hero,
+.fade-in-section > h1.visually-hidden:first-child + .research-band { margin-top: calc(-1 * var(--space-6)); }
+
+.slider.slider-hero {
+  margin: 0;
+
+  .slider-track > figure { position: relative; }
+  .slider-track > figure img {
+    height: 520px;
+    object-fit: cover;
+    border-bottom: none;
+    background: var(--berkeley-blue);
+    @media (max-width: 900px) { height: 400px; }
+    @media (max-width: 640px) { height: 260px; }
+  }
+  .slider-track > figure figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 0;
+    padding: var(--space-8) max(var(--container-padding), calc(50vw - var(--container-max) / 2 + var(--container-padding))) var(--space-4);
+    color: #fff;
+    font-size: 1.0625rem;
+    background: linear-gradient(transparent, rgba(0, 20, 40, 0.75));
+  }
+  .slider-btn { top: 50%; }
+  .slider-counter { display: none; }
+  .slider-dots {
+    position: absolute;
+    right: max(var(--container-padding), calc(50vw - var(--container-max) / 2 + var(--container-padding)));
+    bottom: var(--space-3);
+    margin: 0;
+    button::before { background: rgba(255, 255, 255, 0.7); }
+  }
+}
+
+// "Our research" band
+.research-band {
+  background: var(--berkeley-blue);
+  color: #fff;
+  text-align: center;
+  padding: var(--space-10) var(--container-padding);
+  margin-bottom: var(--space-4);
+
+  .research-band-inner { max-width: 860px; margin: 0 auto; }
+  h2 {
+    color: #fff;
+    margin-top: 0;
+    &::after { margin-left: auto; margin-right: auto; background: var(--california-gold); }
+  }
+  a {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: var(--california-gold);
+    text-underline-offset: 3px;
+    &:hover { color: var(--california-gold); }
+  }
+  p {
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    max-width: none;
+    margin: 0;
+  }
+}
+
+// Research direction tiles
+.research-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-4);
+
+  &.research-tiles-small { grid-template-columns: repeat(auto-fit, minmax(200px, 280px)); }
+}
+
+a.research-tile {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+
+  &:hover { text-decoration: none; }
+  &:hover .research-tile-title { text-decoration: underline; }
+  &:hover img { opacity: 0.9; }
+
+  .research-tile-img {
+    display: block;
+    border-bottom: 8px solid var(--medalist);
+    background: #000;
+    img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: opacity var(--transition-fast); }
+  }
+  .research-tile-title {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    line-height: 1.3;
+    color: var(--berkeley-blue);
+    padding-top: var(--space-2);
+  }
+}
+
+// Home-page tiles: image and title link, summary below
+div.research-tile {
+  display: flex;
+  flex-direction: column;
+
+  .research-tile-img {
+    display: block;
+    border-bottom: 8px solid var(--medalist);
+    background: #000;
+    img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: opacity var(--transition-fast); }
+    &:hover img { opacity: 0.9; }
+  }
+  .research-tile-title {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: var(--space-3) 0 var(--space-2);
+    &::after { display: none; }
+    a { color: var(--berkeley-blue); }
+  }
+  .research-tile-summary { font-size: 1rem; line-height: 1.6; margin: 0; color: var(--text-secondary); }
+}
+
+// Highlights slider: slides are the <li> items of a bibliography list
+.slider.highlight-slider {
+  .slider-track > ol.bibliography {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    > li { flex: 0 0 100%; scroll-snap-align: center; max-width: none; }
+  }
+  .slider-btn { top: 50%; }
+  .slider-counter { display: none; }
+  @media (max-width: 640px) { .slider-btn { display: none; } }
+}
+
+.highlight-slide {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+  background: var(--bg-secondary);
+  border-top: 4px solid var(--berkeley-blue);
+  padding: var(--space-8) 4rem;
+  min-height: 380px;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    padding: var(--space-6) var(--space-4);
+    .highlight-img { order: -1; }
+  }
+
+  .highlight-venue {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--medalist-text);
+  }
+  .highlight-title {
+    margin: var(--space-2) 0;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    a { color: var(--berkeley-blue); }
+  }
+  .highlight-authors { font-size: 0.875rem; color: var(--text-muted); margin-bottom: var(--space-2); }
+  .highlight-abstract { font-size: 0.9375rem; }
+  .highlight-btn {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    padding: 0.45rem 1rem;
+    border: 2px solid var(--berkeley-blue);
+    color: var(--berkeley-blue);
+    &:hover { background: var(--berkeley-blue); color: #fff; text-decoration: none; }
+  }
+  .highlight-img img {
+    width: 100%;
+    max-height: 340px;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+// "See all publications" button (Ramesh-lab style)
+.see-more { text-align: center; margin-top: var(--space-6); }
+.see-more-btn {
+  display: inline-block;
+  padding: 0.5rem 2.5rem;
+  border: 2px solid var(--berkeley-blue);
+  font-weight: 600;
+  color: var(--berkeley-blue);
+  &:hover { background: var(--berkeley-blue); color: #fff; text-decoration: none; }
+}
+
+// Research direction pages
+.research-page {
+  .research-lead p {
+    font-size: 1.3125rem;
+    line-height: 1.6;
+    max-width: 62ch;
+    color: var(--text-secondary);
+  }
+  .research-lead { margin-bottom: var(--space-6); }
+  .past-text { font-size: 1.0625rem; line-height: 1.65; max-width: 72ch; margin-bottom: var(--space-4); }
+}
+
+// "Recent topics" on a research page: one row per topic, title left, text right
+.topic-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-8);
+  border-bottom: 1px solid var(--border-color);
+}
+.topic-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--space-2) var(--space-8);
+  padding: var(--space-6) 0;
+  margin: 0;
+  max-width: none;
+  border-top: 1px solid var(--border-color);
+  @media (max-width: 760px) { grid-template-columns: 1fr; }
+
+  .topic-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--berkeley-blue);
+    margin: 0;
+    &::after { display: none; }
+  }
+  .topic-text { margin: 0 0 var(--space-2); max-width: 68ch; }
+  .topic-note { font-size: 0.9375rem; color: var(--text-muted); margin: 0 0 var(--space-2); }
+  .topic-papers {
+    margin: 0;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    span { color: var(--text-muted); font-weight: 400; }
+  }
+}
+
+// Second menu row on the Research pages
+.section-nav {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  margin-top: calc(-1 * var(--space-6));
+  margin-bottom: var(--space-6);
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-6);
+    list-style: none;
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    max-width: var(--container-max);
+  }
+  li { max-width: none; }
+  a {
+    display: inline-block;
+    padding: var(--space-2) 0;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #555;
+    border-bottom: 3px solid transparent;
+    &:hover { color: var(--berkeley-blue); text-decoration: none; border-bottom-color: var(--california-gold); }
+    &[aria-current="page"] { color: var(--berkeley-blue); border-bottom-color: var(--california-gold); }
+  }
+}
+.fade-in-section > .section-nav:first-child + h1.visually-hidden + * { margin-top: 0; }
+
+// Research overview cards
+.research-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-6);
+}
+.research-card {
+  display: flex;
+  flex-direction: column;
+
+  .research-card-img {
+    display: block;
+    border-bottom: 8px solid var(--medalist);
+    background: #000;
+    img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    &:hover img { opacity: 0.9; }
+  }
+  .research-card-title {
+    font-size: 1.375rem;
+    line-height: 1.3;
+    margin: var(--space-3) 0 var(--space-2);
+    &::after { display: none; }
+  }
+  .research-card-teaser { font-size: 0.9375rem; margin-bottom: var(--space-2); flex: 1; }
+  .research-card-more { font-weight: 600; align-self: flex-start; }
+}
+
+.research-past-link { margin-top: var(--space-8); font-weight: 600; }
+
+// "* Equal contribution" note under paper lists
+.pub-legend { font-size: 0.875rem; color: var(--text-muted); margin-top: var(--space-2); }

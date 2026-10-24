@@ -1,0 +1,11 @@
+{% comment %} Research directions as image tiles with a two-sentence summary (Kanté-lab style). {% endcomment %}
+{% assign thrusts = site.research | where_exp: "r", "r.past != true" | sort: "order" %}
+<div class="research-tiles" markdown="0">
+{% for r in thrusts %}
+  <div class="research-tile">
+    <a class="research-tile-img" href="{{ r.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ r.image | relative_url }}" alt="" loading="lazy"></a>
+    <h3 class="research-tile-title"><a href="{{ r.url | relative_url }}">{{ r.short_title | default: r.title }}</a></h3>
+    {% if r.summary %}<p class="research-tile-summary">{{ r.summary }}</p>{% endif %}
+  </div>
+{% endfor %}
+</div>

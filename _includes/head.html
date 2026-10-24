@@ -1,0 +1,123 @@
+<head>
+  {% if page.collection == 'people' %}{% assign ptitle = page.name %}{% else %}{% assign ptitle = page.title | default: page.name %}{% endif %}
+  {% assign alt = site.alternate_names | first %}
+  {% comment %} Page description: front matter, a post's summary, a person's role, or the site description {% endcomment %}
+  {% if page.description %}{% assign pdesc = page.description %}
+  {% elsif page.summary %}{% assign pdesc = page.summary %}
+  {% elsif page.collection == "people" %}{% assign pgrp = site.data.groups | where: "key", page.group | first %}{% capture pdesc %}{{ page.name }}, {{ pgrp.role }}{% if page.dept %} ({{ page.dept }}){% endif %} in the {{ alt }} (Quantum Devices Group) at UC Berkeley and Berkeley Lab.{% endcapture %}
+  {% elsif page.collection == "research" %}{% capture pdesc %}{{ page.title }}: research in the {{ alt }} (Quantum Devices Group) at UC Berkeley. {{ page.content | strip_html | strip_newlines | truncatewords: 30 }}{% endcapture %}
+  {% else %}{% assign pdesc = site.description %}{% endif %}
+  {% assign pdesc = pdesc | strip_html | strip_newlines | strip %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.url == '/' %}{{ site.title_suffix }} | {{ site.name }}{% elsif ptitle %}{{ ptitle | escape }} | {{ site.title_suffix }}{% else %}{{ site.title_suffix }}{% endif %}</title>
+  <meta name="description" content="{{ pdesc | escape }}">
+  {% if page.noindex %}<meta name="robots" content="noindex">{% endif %}
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:site_name" content="{{ site.title_suffix }}">
+  <meta property="og:title" content="{% if page.url == '/' %}{{ site.name }} ({{ alt }}){% elsif ptitle %}{{ ptitle | escape }}{% else %}{{ site.name | escape }}{% endif %}">
+  <meta property="og:description" content="{{ pdesc | escape }}">
+  <meta property="og:type" content="{% if page.collection == 'posts' %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  {% assign ogimg = page.image | default: page.photo %}{% if page.photo %}{% assign ogimg = page.photo | prepend: '/images/' %}{% endif %}
+  {% if ogimg %}<meta property="og:image" content="{{ ogimg | absolute_url }}">{% else %}<meta property="og:image" content="{{ '/images/group/2026-spring.jpg' | absolute_url }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if ptitle %}{{ ptitle | escape }}{% else %}{{ site.name | escape }}{% endif %}">
+  <meta name="twitter:description" content="{{ pdesc | escape }}">
+
+  <!-- Fonts: the Berkeley brand faces (Freight Sans, Freight Micro) from the
+       Adobe Fonts kit the current WordPress site uses. Adobe kits only serve
+       domains they are registered for, so elsewhere (localhost, github.io)
+       the self-hosted Source Serif 4 and system sans fallbacks are used. -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="stylesheet" href="https://use.typekit.net/scr0aog.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <meta name="theme-color" content="#003262">
+  <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
+  <!-- Group logo (images/logo/qdg-logo.png); favicon.ico, favicon.png and
+       apple-touch-icon.png are square versions of it. -->
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+  <link rel="icon" href="{{ '/favicon.png' | relative_url }}" type="image/png">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+
+  <!-- Accent color from config; light/dark variants are derived in _sass/base/_variables.scss -->
+  {% if site.accent_color %}
+  <style>
+    :root { --accent-base: {{ site.accent_color }}; }
+  </style>
+  {% endif %}
+
+  {% unless site.dark_mode == false %}
+  <!-- Dark mode: apply saved theme before paint to prevent flash -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-bs-theme', saved);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      }
+    })();
+  </script>
+  {% endunless %}
+
+  {% if jekyll.environment == 'production' %}
+  {% include analytics.html %}
+  {% endif %}
+
+  {% if page.math or site.math %}{% include mathjax.html %}{% endif %}
+
+  <!-- JSON-LD structured data: the group (with its other names), its PI, and this page -->
+  {% assign home = '/' | absolute_url %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ResearchOrganization",
+        "@id": "{{ home }}#group",
+        "name": {{ site.name | jsonify }},
+        "alternateName": {{ site.alternate_names | jsonify }},
+        "url": "{{ home }}",
+        "description": {{ site.description | jsonify }},
+        "logo": "{{ '/images/logo/qdg-logo.png' | absolute_url }}",
+        "image": "{{ '/images/group/2026-spring.jpg' | absolute_url }}",
+        "email": "{{ site.email }}",
+        "address": { "@type": "PostalAddress", "streetAddress": "572 Cory Hall", "addressLocality": "Berkeley", "addressRegion": "CA", "postalCode": "94720", "addressCountry": "US" },
+        "parentOrganization": [
+          { "@type": "CollegeOrUniversity", "name": "University of California, Berkeley", "url": "https://www.berkeley.edu" },
+          { "@type": "ResearchOrganization", "name": "Lawrence Berkeley National Laboratory", "url": "https://www.lbl.gov" }
+        ],
+        "founder": { "@id": "{{ home }}#pi" },
+        "sameAs": [{{ site.links.github | jsonify }}]
+      },
+      {
+        "@type": "Person",
+        "@id": "{{ home }}#pi",
+        "name": "Alp Sipahigil",
+        "jobTitle": "Ping & Amy Chao Family Assistant Professor of EECS and Physics",
+        "url": "{{ '/team/alp-sipahigil/' | absolute_url }}",
+        "worksFor": { "@id": "{{ home }}#group" },
+        "affiliation": [
+          { "@type": "CollegeOrUniversity", "name": "University of California, Berkeley" },
+          { "@type": "ResearchOrganization", "name": "Lawrence Berkeley National Laboratory" }
+        ],
+        "sameAs": [{{ site.links.google_scholar | jsonify }}, {{ site.pi_faculty_page | jsonify }}]
+      },
+      {
+        "@type": "{% if page.url == '/' %}WebSite{% elsif page.collection == 'posts' %}NewsArticle{% elsif page.collection == 'people' %}ProfilePage{% else %}WebPage{% endif %}",
+        "name": {% if page.url == '/' %}{{ site.name | append: ' (' | append: alt | append: ')' | jsonify }}{% else %}{{ ptitle | jsonify }}{% endif %},
+        {% if page.url == '/' %}"alternateName": {{ site.alternate_names | jsonify }},
+        {% endif %}{% if page.collection == 'posts' %}"headline": {{ page.title | jsonify }},
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        {% endif %}"url": "{{ page.url | absolute_url }}",
+        "description": {{ pdesc | jsonify }},
+        "publisher": { "@id": "{{ home }}#group" }
+      }
+    ]
+  }
+  </script>
+</head>

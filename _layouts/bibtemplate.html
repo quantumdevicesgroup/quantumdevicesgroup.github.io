@@ -1,0 +1,51 @@
+---
+---
+
+{% comment %}
+  One publication. Fields come from assets/ref.bib (built by scripts/build_bib.py):
+    doi, arxiv, url       links          file     PDF in papers/
+    equal                 equal-contribution surnames, marked *
+    venuenote             shown after the venue (e.g. News & Views)
+    link1label/link1url … extra buttons (News & Views, talk video, ...)
+  Group members in the author list link to their page (see _plugins/group_people.rb).
+{% endcomment %}
+{% assign is_preprint = false %}
+{% if entry.type == 'unpublished' or entry.journal == nil or entry.journal == '' %}{% assign is_preprint = true %}{% endif %}
+{% assign arxiv_doi = entry.doi | slice: 0, 16 %}
+{% assign has_pdf = false %}
+{% if entry.file %}
+  {% assign pdf_path = "/papers/" | append: entry.file %}
+  {% for file in site.static_files %}{% if file.path contains pdf_path %}{% assign has_pdf = true %}{% endif %}{% endfor %}
+{% endif %}
+{% if is_preprint %}{% assign main_url = entry.arxiv | prepend: 'https://arxiv.org/abs/' %}{% else %}{% assign main_url = entry.doi | prepend: 'https://doi.org/' %}{% endif %}
+
+<div class="pub-entry" data-pub-searchable data-type="{% if is_preprint %}preprint{% else %}journal{% endif %}" data-members="{{ entry | pub_members }}">
+  <div class="pub-title"><a href="{{ main_url }}" target="_blank" rel="noopener">{{ entry.title | bib_text }}</a></div>
+  <div class="pub-authors">{{ entry | pub_authors }}</div>
+  <div class="pub-venue">
+    {% if is_preprint %}arXiv:{{ entry.arxiv }} ({{ entry.year }})
+    {% else %}<i>{{ entry.journal | bib_text }}</i>{% if entry.volume %} <b>{{ entry.volume }}</b>{% endif %}{% if entry.pages %}, {{ entry.pages | bib_text }}{% endif %} ({{ entry.year }}){% endif %}
+    {% if entry.venuenote %}<span class="pub-note">{{ entry.venuenote | bib_text }}</span>{% endif %}
+  </div>
+
+  <div class="pub-actions">
+    {% if has_pdf %}<a href="{{ entry.file | prepend: '/papers/' | relative_url }}" target="_blank" class="btn-pill btn-pdf">PDF</a>{% endif %}
+    {% unless is_preprint %}{% if entry.doi %}<a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener" class="btn-pill btn-doi">DOI</a>{% endif %}{% endunless %}
+    {% if entry.arxiv %}<a href="https://arxiv.org/abs/{{ entry.arxiv }}" target="_blank" rel="noopener" class="btn-pill btn-arxiv">arXiv</a>{% endif %}
+    {% if entry.link1url %}<a href="{{ entry.link1url }}" target="_blank" rel="noopener" class="btn-pill btn-link">{{ entry.link1label }}</a>{% endif %}
+    {% if entry.link2url %}<a href="{{ entry.link2url }}" target="_blank" rel="noopener" class="btn-pill btn-link">{{ entry.link2label }}</a>{% endif %}
+    {% if entry.link3url %}<a href="{{ entry.link3url }}" target="_blank" rel="noopener" class="btn-pill btn-link">{{ entry.link3label }}</a>{% endif %}
+    <button class="btn-pill btn-bib" data-toggle-target="bib-{{ entry.key }}">BibTeX</button>
+    {% if entry.abstract %}<button class="btn-pill btn-abstract" data-toggle-target="abs-{{ entry.key }}">Abstract</button>{% endif %}
+  </div>
+
+  <div class="pub-collapse" id="bib-{{ entry.key }}">
+    <pre>{{ entry.bibtex }}</pre>
+  </div>
+
+  {% if entry.abstract %}
+  <div class="pub-collapse pub-abstract" id="abs-{{ entry.key }}">
+    <p>{{ entry.abstract | bib_text }}</p>
+  </div>
+  {% endif %}
+</div>

@@ -1,7 +1,7 @@
 ---
-title: "Superconducting quantum hardware"
+title: "Superconducting qubits"
 slug: superconducting-qubits
-topic: "superconducting quantum hardware"   # used in "Publications related to …"
+topic: "superconducting qubits"   # used in "Publications related to …"
 order: 1
 summary: "Superconducting circuits are the leading solid-state platform for quantum computing, and their error rates are set largely by decoherence. We study how superconducting qubits lose coherence to defects and phonons, and engineer these interactions to build qubits with longer coherence and lower error rates."   # two sentences, shown on the home page and Research overview
 image: /images/research/superconducting-qubits.jpg

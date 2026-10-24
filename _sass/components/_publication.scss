@@ -73,7 +73,7 @@
 
   .pub-abstract p {
     font-size: 0.9375rem;
-    max-width: none;
+    max-width: var(--measure);
     background-color: var(--bg-secondary);
     border-left: 3px solid var(--california-gold);
     padding: var(--space-3) var(--space-4);
@@ -128,7 +128,7 @@
 }
 
 // Controls: search, type chips, member menu
-.pub-intro { max-width: 80ch; }
+.pub-intro { max-width: var(--measure); }
 
 .pub-controls {
   background: var(--bg-secondary);

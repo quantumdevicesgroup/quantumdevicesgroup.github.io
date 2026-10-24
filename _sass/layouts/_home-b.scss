@@ -215,13 +215,13 @@ div.research-tile {
 // Research direction pages
 .research-page {
   .research-lead p {
-    font-size: 1.3125rem;
+    font-size: 1.375rem;
     line-height: 1.6;
-    max-width: none;
+    max-width: var(--measure);
     color: var(--text-secondary);
   }
   .research-lead { margin-bottom: var(--space-6); }
-  .past-text { font-size: 1.0625rem; line-height: 1.65; max-width: 72ch; margin-bottom: var(--space-4); }
+  .past-text { font-size: 1.0625rem; line-height: 1.65; max-width: var(--measure); margin-bottom: var(--space-4); }
 }
 
 // "Recent topics" on a research page: one row per topic, title left, text right
@@ -250,7 +250,7 @@ div.research-tile {
     margin: 0;
     &::after { display: none; }
   }
-  .topic-text { margin: 0 0 var(--space-2); max-width: 68ch; }
+  .topic-text { margin: 0 0 var(--space-2); max-width: var(--measure); }
   .topic-note { font-size: 0.9375rem; color: var(--text-muted); margin: 0 0 var(--space-2); }
   .topic-papers {
     margin: 0;

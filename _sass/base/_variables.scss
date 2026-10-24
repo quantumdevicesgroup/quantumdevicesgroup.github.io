@@ -3,6 +3,9 @@
 // =============================================================
 
 :root {
+  // Line length for running text: about 75 characters in Freight Sans
+  // (WCAG 1.4.8 asks for at most 80). In em, so it scales with font size.
+  --measure: 31em;
   // Accent. Set `accent_color` in _config.yml (it overrides --accent-base);
   // every other accent variable is derived from it so light and dark mode
   // both stay readable whatever color is chosen.

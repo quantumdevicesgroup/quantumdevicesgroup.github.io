@@ -71,8 +71,8 @@ Each research direction is a file in `_research/`. The front matter holds:
 
 The paragraph below the front matter is the page's intro. The page then shows
 the research highlights and the group's papers tagged with that direction.
-`past-research.md` instead lists `sections`, each with a `title`, a `text`
-paragraph and the `thrust` whose pre-Berkeley papers it shows.
+`past-research.md` instead lists `sections`, each with a `title`, the `thrust`
+whose pre-Berkeley papers it shows and an optional `text` paragraph.
 
 ## Post news
 

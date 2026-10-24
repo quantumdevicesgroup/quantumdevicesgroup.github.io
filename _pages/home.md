@@ -6,7 +6,7 @@ permalink: /
 
 <h1 class="visually-hidden">{{ site.name }}</h1>
 
-<p class="lead home-lead">The Sipahigil Lab at UC Berkeley and Berkeley Lab develops solid-state quantum hardware, including superconducting circuits, nanomechanical systems, silicon photonics and integrated electro-optics. On each platform, we study the fundamental materials and device physics that limits performance: how qubits, emitters and transducers interact with their microscopic environment of defects, phonons and interfaces. We use this understanding to engineer devices with longer coherence and lower errors, and to build the interconnects that link them into larger quantum systems.</p>
+<p class="lead home-lead">The Sipahigil Lab at UC Berkeley and Berkeley Lab develops solid-state quantum hardware. We study the materials and device physics that limit these devices, and use this understanding to engineer longer coherence, lower errors and scalable interconnects.</p>
 
 <h2><a class="heading-link" href="{{ '/research/' | relative_url }}">Current research directions</a></h2>
 {% include research_tiles.html %}

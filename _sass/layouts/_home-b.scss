@@ -217,7 +217,7 @@ div.research-tile {
   .research-lead p {
     font-size: 1.3125rem;
     line-height: 1.6;
-    max-width: 62ch;
+    max-width: none;
     color: var(--text-secondary);
   }
   .research-lead { margin-bottom: var(--space-6); }

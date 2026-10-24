@@ -83,7 +83,7 @@ ul, ol { color: var(--text-secondary); }
   font-size: 1.25rem;
   line-height: 1.6;
   color: var(--text-primary);
-  max-width: 68ch;
+  max-width: none;   // intro paragraphs span the content column
 }
 
 hr {

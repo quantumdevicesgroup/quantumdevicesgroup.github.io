@@ -8,6 +8,6 @@ permalink: /research/
 
 <h1 class="visually-hidden">Research</h1>
 
-<p class="lead">We develop solid-state quantum hardware. We study the materials and device physics that limit these devices, and use this understanding to engineer longer coherence, lower errors and scalable interconnects.</p>
+<p class="lead">We study the materials and device physics that limit solid-state quantum hardware, and use this understanding to engineer longer coherence, lower errors and scalable interconnects.</p>
 
 {% include research_cards.html %}

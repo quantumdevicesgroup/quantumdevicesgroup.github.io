@@ -22,6 +22,10 @@ links:
 # ============================================================
 accent_color: "#003262"      # Berkeley Blue
 dark_mode: false             # the Berkeley brand theme has no dark mode
+# Adobe Fonts web project with Freight Sans Pro and Freight Micro Pro
+# (400/700, normal/italic). Its character set must be "All Characters" so
+# letters such as ğ, ş, ı and İ use Freight instead of a fallback font.
+adobe_fonts_kit: "scr0aog"
 math: false
 description: "The Sipahigil Lab at UC Berkeley and Berkeley Lab, led by Alp Sipahigil, builds scalable quantum hardware and studies the device physics that limits coherence."
 # Other names people search for; used in page titles and structured data

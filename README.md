@@ -118,6 +118,11 @@ quantumdevices.berkeley.edu needs a CNAME record from campus DNS pointing to
 
 ## Fonts
 
-The Berkeley fonts (Freight Sans, Freight Micro) load from the Adobe Fonts kit
-the WordPress site uses (`use.typekit.net/scr0aog`). If that kit stops serving
-the new host, the site falls back to Source Serif 4 and the system sans.
+The Berkeley fonts (Freight Sans Pro, Freight Micro Pro) load from an Adobe
+Fonts web project, set by `adobe_fonts_kit` in `_config.yml`. It is currently
+the WordPress site's kit (`scr0aog`). To use a kit of your own, create a web
+project at fonts.adobe.com with both families in weights 400 and 700, normal
+and italic, set its character set to **All Characters** (otherwise letters such
+as ğ, ş, ı and İ are drawn in a fallback font), and put its ID in
+`adobe_fonts_kit`. If the kit stops serving, the site falls back to Source
+Serif 4 and the system sans.

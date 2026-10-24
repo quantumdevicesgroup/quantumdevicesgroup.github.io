@@ -6,7 +6,7 @@ permalink: /
 
 <h1 class="visually-hidden">{{ site.name }}</h1>
 
-<p class="lead home-lead">The Sipahigil Lab at UC Berkeley and Berkeley Lab studies the materials and device physics that limit solid-state quantum hardware, and uses this understanding to engineer longer coherence, lower errors and scalable interconnects.</p>
+<p class="lead home-lead">The Sipahigil Lab at UC Berkeley and Berkeley Lab studies the materials and device physics that limit solid-state quantum hardware performance, and uses this understanding to engineer longer coherence, lower errors and scalable interconnects.</p>
 
 <h2><a class="heading-link" href="{{ '/research/' | relative_url }}">Current research directions</a></h2>
 {% include research_tiles.html %}

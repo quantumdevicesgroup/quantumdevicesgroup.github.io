@@ -9,6 +9,7 @@ image: /images/research/silicon-photonics.jpg
 topics:   # each: title, text, optional note (HTML) and papers [{label, url}]
   - title: "How can we engineer an atom-like qubit in silicon?"
     text: "Few defects in silicon combine bright telecom-band optical transitions with long-lived spins. We use first-principles calculations to find and characterize defects like the T center, and to understand what makes a defect optically active."
+    note: 'In collaboration with <a href="https://hautier.rice.edu/">Geoffroy Hautier</a>'
     papers:
       - {label: "Materials for Quantum Technology 2024", url: "https://doi.org/10.1088/2633-4356/ad1d38"}
       - {label: "Science Advances 2023", url: "https://www.science.org/doi/abs/10.1126/sciadv.adh8617"}
@@ -20,6 +21,7 @@ topics:   # each: title, text, optional note (HTML) and papers [{label, url}]
       - {label: "Optica 2025", url: "https://doi.org/10.1364/OPTICA.564691"}
   - title: "Understanding and reducing spectral diffusion"
     text: "Single T centers in nanophotonic devices have much broader optical lines than in bulk silicon, and every network application depends on narrowing them. We study the fluctuating charge environment behind this spectral diffusion and test ways to reduce it, from new materials and fabrication routes to electrical control of the charge environment."
+    note: 'In collaboration with <a href="https://hugroup.seas.harvard.edu/">Evelyn Hu</a>'
     papers:
       - {label: "PRX Quantum 2025", url: "https://journals.aps.org/prxquantum/abstract/10.1103/x2cv-2gcw"}
       - {label: "arXiv 2026", url: "https://arxiv.org/abs/2608.15993"}

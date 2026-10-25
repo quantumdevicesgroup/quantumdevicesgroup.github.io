@@ -1,5 +1,6 @@
 ---
 name: "Darius Vera"
+fellowship: "NSF Graduate Research Fellow"
 group: grad
 order: 5
 dept: "EECS"

@@ -1,5 +1,6 @@
 ---
 name: "Yuxiao Jiang"
+fellowship: "Miller Research Fellow"
 group: postdoc
 order: 2
 photo: "people/yuxiao-jiang.jpg"

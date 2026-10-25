@@ -29,7 +29,7 @@ order: 9               # position within the section
 dept: "EECS"
 photo: "people/first-last.jpg"   # in images/; square-ish, about 600 px
 since: 2026            # first year their papers count as group papers
-# optional: coadvisor, website, email, github, tenure, next_position,
+# optional: fellowship ("Miller Research Fellow", shown on the profile page only), coadvisor, website, email, github, tenure, next_position,
 #           thesis, thesis_url, institution,
 #           photo_position: "50% 40%"   # move the circular crop (x% y%)
 ---

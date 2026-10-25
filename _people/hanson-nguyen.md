@@ -1,5 +1,6 @@
 ---
 name: "Hanson Nguyen"
+fellowship: "NSF Graduate Research Fellow"
 group: grad
 order: 8
 dept: "EECS"

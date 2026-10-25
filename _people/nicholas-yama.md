@@ -1,5 +1,6 @@
 ---
 name: "Nicholas Yama"
+fellowship: "IC Postdoctoral Fellow"
 group: postdoc
 order: 1
 photo: "people/nicholas-yama.jpg"

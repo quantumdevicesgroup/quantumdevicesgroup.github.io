@@ -1,5 +1,6 @@
 ---
 name: "Ahmet Oguz Sakin"
+fellowship: "Fulbright Fellow"
 group: grad
 order: 6
 dept: "EECS"

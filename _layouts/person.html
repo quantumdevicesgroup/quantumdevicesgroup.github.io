@@ -13,6 +13,7 @@ layout: default
         <ul class="person-positions">{% for p in page.positions %}<li>{{ p | markdownify | remove: '<p>' | remove: '</p>' }}</li>{% endfor %}</ul>
       {% else %}
         <p class="person-role">{{ grp.role }}{% if page.dept %}, {{ page.dept }}{% endif %}{% if page.institution %}, {{ page.institution }}{% endif %}{% if page.tenure %} &middot; {{ page.tenure }}{% endif %}</p>
+        {% if page.fellowship %}<p class="person-fellowship">{{ page.fellowship }}</p>{% endif %}
         {% if page.coadvisor %}<p class="person-meta">Co-advisor: {{ page.coadvisor }}</p>{% endif %}
         {% if page.next_position %}<p class="person-meta">Next: {{ page.next_position }}</p>{% endif %}
         {% if page.thesis %}<p class="person-meta">Thesis: <a href="{{ page.thesis_url }}">{{ page.thesis }}</a></p>{% endif %}

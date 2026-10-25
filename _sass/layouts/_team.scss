@@ -198,3 +198,12 @@ a.team-card {
   li { margin-bottom: var(--space-2); max-width: none; }
   .text-muted { font-size: 0.875rem; }
 }
+
+// Named fellowship on a member's profile page (front matter: fellowship)
+.person-fellowship {
+  margin: 0 0 var(--space-1);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--medalist-text);
+}

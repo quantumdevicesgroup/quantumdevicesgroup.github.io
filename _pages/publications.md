@@ -6,7 +6,7 @@ permalink: /publications/
 
 <h1 class="visually-hidden">Publications</h1>
 
-{% assign people = site.people | sort: "pub_rank" %}
+{% assign people = site.people | sort: "name" %}
 <div class="pub-controls" markdown="0">
   <input type="search" class="pub-search" id="pubSearch" placeholder="Search by title, author, journal or year" aria-label="Search publications">
   <div class="pub-filters">

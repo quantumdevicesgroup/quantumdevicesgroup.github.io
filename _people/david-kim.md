@@ -5,5 +5,6 @@ order: 3
 dept: "Physics & CS"
 tenure: "2026–present"
 topic: "Superconducting qubits"
+email: "davidkm@berkeley.edu"
 since: 2026
 ---
